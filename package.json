@@ -1,0 +1,28 @@
+{
+  "name": "toddy",
+  "version": "1.0.0",
+  "description": "Node Coconut in Drink Form",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/quintype/toddy.git"
+  },
+  "keywords": [
+    "quintype",
+    "toddy",
+    "coconut"
+  ],
+  "author": "Dev Core <dev-core@quintype.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "handlebars": "^4.0.5",
+    "react": "^15.3.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
