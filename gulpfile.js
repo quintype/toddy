@@ -1,7 +1,5 @@
 var gulp = require("gulp");
 var elixir = require('laravel-elixir');
-var shell = require("gulp-shell");
-var gulpCopy = require("gulp-copy");
 var del = require("del");
 
 var destination = "public/toddy/assets";
