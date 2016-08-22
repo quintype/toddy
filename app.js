@@ -9,7 +9,7 @@ var app = express();
 var React = require("react");
 var ReactDomServer = require("react-dom/server");
 
-var HomePage = require("./app/assets/javascripts/pages/home.js");
+var HomePage = require("./resources/assets/javascripts/pages/home.js");
 app.get('/', function (req, res) {
   var html = ReactDomServer.renderToString(React.createElement(HomePage, {foobar: "World!"}));
   var js = "app.homePage(" + JSON.stringify({foobar: "World!"}) + ")";
