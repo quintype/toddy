@@ -1,0 +1,11 @@
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="{{assetPath 'application.css'}}" />
+  </head>
+  <body>
+    <div id="container">{{{content}}}</div>
+    <script type="text/javascript" src="{{assetPath 'application.js'}}"></script>
+    {{#js}}<script type="text/javascript">{{{.}}}</script>{{/js}}
+  </body>
+</html>

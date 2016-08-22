@@ -1,6 +1,9 @@
-var app = app || {};
+var React = require("react");
+var ReactDom = require("react-dom");
+
+global.app = global.app || {};
 
 app.homePage = function(opts) {
   var HomePage = require("./pages/home");
-  ReactDom.render(document.getElementById("container"), React.createElement(HomePage, opts));
+  ReactDom.render(React.createElement(HomePage, opts), document.getElementById("container"));
 };
