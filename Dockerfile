@@ -2,7 +2,6 @@ FROM node:6.4.0
 
 MAINTAINER Quintype Developers <dev-core@quintype.com>
 
-ENV NODE_ENV production
 
 EXPOSE 3000
 
@@ -17,8 +16,10 @@ USER app
 WORKDIR /app
 
 RUN git log -n1 --pretty="Commit Date: %aD%nBuild Date: `date --rfc-2822`%n%h %an%n%s%n" > public/round-table.txt && \
-    npm install && \
-    ./node_modules/.bin/gulp --production
+    npm install
+
+ENV NODE_ENV production
+RUN ./node_modules/.bin/gulp --production
 
 ENTRYPOINT ["npm"]
 CMD ["start"]
