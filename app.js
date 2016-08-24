@@ -8,6 +8,8 @@ var layout = require("./app/layout");
 
 app.use(express.static("public"));
 
+app.get("/ping", (req, res) => res.send("pong"));
+
 var HomePage = require("./resources/assets/js/pages/home.js");
 app.get('/', function (req, res) {
   var html = ReactDomServer.renderToString(React.createElement(HomePage, {foobar: "World!"}));
