@@ -1,10 +1,5 @@
 var fs = require("fs");
-
-// Move this to config
-var config = {
-  "asset-host": "",
-  "publisher-name": "toddy"
-}
+var config = require("./config");
 
 var Handlebars = require("handlebars");
 var layout = Handlebars.compile(fs.readFileSync("resources/views/layout.handlebars", {encoding: 'utf8'}));
