@@ -4,7 +4,7 @@ var config = require("./config");
 var Handlebars = require("handlebars");
 var layout = Handlebars.compile(fs.readFileSync("resources/views/layout.handlebars", {encoding: 'utf8'}));
 
-var assets = JSON.parse(fs.readFileSync("public/toddy/assets/rev-manifest.json"));
+var assets = JSON.parse(fs.readFileSync("public/" + config.publisher.publisher_name + "/assets/rev-manifest.json"));
 function renderLayout(opts) {
   return layout(opts, {
     helpers: {
