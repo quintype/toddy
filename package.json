@@ -27,6 +27,6 @@
   "devDependencies": {
     "del": "^2.2.2",
     "gulp": "^3.9.1",
-    "laravel-elixir": "^5.0.0"
+    "gulp-quintype": "^1.0.4"
   }
 }
