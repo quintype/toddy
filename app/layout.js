@@ -9,7 +9,7 @@ function renderLayout(opts) {
   return layout(opts, {
     helpers: {
       assetPath: function(path) {
-        return [config["asset-host"], config["publisher-name"], "assets", assets[path]].join("/");
+        return [config.publisher.asset_host, config.publisher.publisher-name, "assets", assets[path]].join("/");
       }
     }
   })

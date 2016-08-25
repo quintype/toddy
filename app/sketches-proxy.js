@@ -1,6 +1,6 @@
 var config = require("./config");
 
-var sketchesHost = config["sketches-host"];
+var sketchesHost = config.publisher.sketches_host;
 var httpHost = sketchesHost.replace(/https?:\/\//, "");
 
 var apiProxy = require("http-proxy").createProxyServer({

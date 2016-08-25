@@ -1,7 +1,8 @@
-var config = {
-  "asset-host": "",
-  "publisher-name": "toddy",
-  "sketches-host": "http://sketches.quintype.com"
-};
+var fs = require("fs");
+var yaml = require("js-yaml");
 
-module.exports = config;
+var publisherConfig = yaml.safeLoad(fs.readFileSync("config/publisher.yml"));
+
+module.exports = {
+  publisher: publisherConfig
+};
