@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
 
+var config = require("./app/config");
+config.init();
+
 var sketchesProxy = require("./app/sketches-proxy");
 
 var React = require("react");
@@ -10,7 +13,12 @@ var layout = require("./app/layout");
 
 app.use(express.static("public"));
 
-app.get("/ping", (req, res) => res.send("pong"));
+app.get("/ping", function(req, res) {
+  if(config.site)
+    res.send("pong")
+  else
+    res.status(503).send({error: {message: "Config not loaded"}});
+});
 
 app.all("/api/*", sketchesProxy);
 

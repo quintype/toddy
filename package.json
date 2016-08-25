@@ -24,7 +24,8 @@
     "http-proxy": "^1.14.0",
     "js-yaml": "^3.6.1",
     "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "react-dom": "^15.3.1",
+    "superagent": "^2.2.0"
   },
   "devDependencies": {
     "del": "^2.2.2",
