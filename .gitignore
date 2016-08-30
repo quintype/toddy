@@ -1,3 +1,4 @@
 /node_modules
 /public/toddy/assets
 /tmp
+npm-debug.log
