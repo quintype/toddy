@@ -2,3 +2,4 @@
 /public/toddy/assets
 /tmp
 npm-debug.log
+*.swp

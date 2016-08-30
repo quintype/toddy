@@ -20,6 +20,17 @@ app.get("/ping", function(req, res) {
 });
 
 app.all("/api/*", sketchesProxy);
+app.all("/login", sketchesProxy);
+app.all("/qlitics.js", sketchesProxy);
+app.all("/auth.form", sketchesProxy);
+app.all("/auth.callback", sketchesProxy);
+app.all("/auth", sketchesProxy);
+app.all("/admin/*", sketchesProxy);
+app.all("/sitemap", sketchesProxy);
+app.all("/feed", sketchesProxy);
+app.all("/rss-feed", sketchesProxy);
+app.all("/stories.rss", sketchesProxy);
+app.all("/news_sitemap.xml", sketchesProxy);
 
 var HomePage = require("./resources/assets/js/pages/home.js");
 app.get('/', function (req, res) {
