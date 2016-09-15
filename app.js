@@ -5,8 +5,7 @@ var client = require("./app/client");
 
 var sketchesProxy = require("./app/sketches-proxy");
 
-var React = require("react");
-var ReactDomServer = require("react-dom/server");
+var serverSideRender = require("./app/server-side-render");
 
 var layout = require("./app/layout");
 
@@ -32,11 +31,9 @@ app.all("/rss-feed", sketchesProxy);
 app.all("/stories.rss", sketchesProxy);
 app.all("/news_sitemap.xml", sketchesProxy);
 
-var HomePage = require("./resources/assets/js/pages/home.js");
 app.get('/', function (req, res) {
-  var html = ReactDomServer.renderToString(React.createElement(HomePage, {foobar: "World!"}));
   var js = "app.homePage(" + JSON.stringify({foobar: "World!"}) + ")";
-  res.send(layout({title: "Sample App", content: html, js: js}));
+  res.send(layout({title: "Sample App", content: serverSideRender(js), js: js}));
 });
 
 app.listen(3000, function () {
