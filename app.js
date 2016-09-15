@@ -1,13 +1,36 @@
 var express = require('express');
 var app = express();
 
+var _ = require("lodash");
+
 var client = require("./app/client");
 
 var sketchesProxy = require("./app/sketches-proxy");
-
 var serverSideRender = require("./app/server-side-render");
 
 var layout = require("./app/layout");
+
+var Promise = require("bluebird");
+
+function withLayout(f) {
+  return function(req, res) {
+    var config = client.getConfig();
+
+    f(req, res, {config: config})
+      .then(result => {
+	if(!res.finished) {
+	  res.send(layout(_.extend({
+	    title: "Sample App",
+	    config: config
+	  }, result)));
+	}
+      }).catch(function(e) {
+	res.status(500);
+	console.log(e);
+      }).finally(() => res.end());
+  };
+}
+
 
 app.use(express.static("public"));
 
@@ -31,10 +54,10 @@ app.all("/rss-feed", sketchesProxy);
 app.all("/stories.rss", sketchesProxy);
 app.all("/news_sitemap.xml", sketchesProxy);
 
-app.get('/', function (req, res) {
+app.get('/', withLayout(() => {
   var js = "app.homePage(" + JSON.stringify({foobar: "World!"}) + ")";
-  res.send(layout({title: "Sample App", content: serverSideRender(js), js: js}));
-});
+  return new Promise((resolve) => resolve({title: "Sample App", content: serverSideRender(js), js: js}));
+}));
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
