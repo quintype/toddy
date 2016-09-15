@@ -2,7 +2,8 @@ var React = require("react");
 var _ = require("lodash");
 
 var ROOT_COMPONENTS = {
-  home: require("./home")
+  home: require("./home"),
+  story: require("./story")
 };
 
 class RootComponent extends React.Component {
@@ -25,7 +26,7 @@ class RootComponent extends React.Component {
 
   render() {
     return React.createElement(ROOT_COMPONENTS[this.state.page], _.extend({
-      changePage: this.changePage,
+      changePage: (page, args) => this.changePage(page, args),
       key: this.state.counter
     }, this.state.args));
   }

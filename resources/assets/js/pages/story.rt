@@ -1,0 +1,5 @@
+<div rt-scope="this.props.story as story">
+	<img src="{this.heroImagePath()}" class="story-page-hero-image"/>
+	<h1 class="stories-list-story-headline">{story.headline}</h1>
+	<span>{story['author-name']}</span> - <a href="#" onClick="() => this.props.changePage('home', {'stories': []})">Back</a>
+</div>
