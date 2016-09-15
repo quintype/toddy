@@ -1,0 +1,42 @@
+body {
+    background-color: $light-gray;
+    margin: 0;
+}
+
+.body-container {
+    background-color: white;
+    margin: auto;
+    max-width: 1024px;
+
+    @media (min-width: 768px) {
+	padding: 10px;
+	border-radius: 10px;
+    }
+}
+
+.layout-menu {
+    float: left;
+    min-width: 128px;
+    display: none;
+
+    @media (min-width: 768px) {
+	display: block;
+    }
+}
+
+.layout-content {
+    float: left;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .layout-menu {
+	display: block;
+	width: 20%;
+    }
+    .layout-content { width: 80%; }
+}
+
+.clear {
+    clear: both;
+}
