@@ -12,10 +12,15 @@ function compileAll() {
   ));
 };
 
+gulp.task("server-compile", function() {
+  return util.browserify("./resources/assets/js/server.js", "server.js")
+    .pipe(gulp.dest("resources"));
+});
+
 gulp.task("clean", function() { return del([destination]); });
 gulp.task("compile", compileAll);
 gulp.task("clean-compile", ["clean"], compileAll);
-gulp.task("default", ["clean-compile"]);
+gulp.task("default", ["server-compile", "clean-compile"]);
 
 gulp.task('watch', ['clean-compile'], function() {
   gulp.watch("./resources/assets/**/*", ['compile']);

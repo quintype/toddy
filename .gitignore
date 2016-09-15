@@ -3,3 +3,4 @@
 /tmp
 npm-debug.log
 *.swp
+/resources/server.js
