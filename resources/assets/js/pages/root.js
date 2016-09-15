@@ -5,29 +5,30 @@ var ROOT_COMPONENTS = {
   home: require("./home")
 };
 
-var RootComponent = React.createClass({
-  getInitialState: function() {
-    return {
-      page: this.props.page,
-      args: this.props.args,
+class RootComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: props.page,
+      args: props.args,
       counter: 0
     }
-  },
+  }
 
-  changePage: function(page, args) {
+  changePage(page, args) {
     this.setState({
       page: page,
       args: args,
       counter: this.state.counter + 1
     });
-  },
+  }
 
-  render: function() {
+  render() {
     return React.createElement(ROOT_COMPONENTS[this.state.page], _.extend({
       changePage: this.changePage,
       key: this.state.counter
     }, this.state.args));
   }
-});
+};
 
 module.exports = RootComponent;

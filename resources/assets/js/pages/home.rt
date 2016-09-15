@@ -1,6 +1,6 @@
 <div class="home-page">
     <ul class="stories-list">
-	<li rt-repeat="story in this.state.stories">
+	<li rt-repeat="story in this.state.stories" key="{storyIndex}">
 	    <a href="" class="stories-list-story">
 		<img src="{this.imagePath(story)}"/>
 		<h2 class="stories-list-story-headline">{story.headline}</h2>
