@@ -63,6 +63,22 @@ app.get('/', withLayout(() => {
   }));
 }));
 
+app.get("/shell.html", withLayout(() => {
+  return new Promise((resolve) => resolve({
+    title: "Sample App",
+    content: ""
+  }));
+}));
+
+var serviceWorkerJs = require("./app/render-service-worker");
+app.get("/service-worker.js", function(req, res) {
+  res.status(200)
+    .set("Content-Type", "text/javascript")
+    .send(serviceWorkerJs({
+      origin: `${req.protocol}://${req.get('host')}`
+    }));
+});
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });

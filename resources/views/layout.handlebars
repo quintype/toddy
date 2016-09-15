@@ -13,10 +13,14 @@
       <div class="clear"></div>
     </div>
     <script type="text/javascript">
-      qtReady.push(function() {
-        {{#js}}{{{.}}};{{/js}}
-      });
+     qtReady.push(function() {
+	 {{#js}}{{{.}}};{{/js}}
+     });
+
+     if('serviceWorker' in navigator) {
+	 navigator.serviceWorker.register('/service-worker.js');
+     }
     </script>
-    <script type="text/javascript" src="{{assetPath 'application.js'}}" async></script>
+    <script type="text/javascript" src="{{assetPath 'application.js'}}"></script>
   </body>
 </html>
