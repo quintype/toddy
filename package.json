@@ -18,6 +18,9 @@
   ],
   "author": "Dev Core <dev-core@quintype.com>",
   "license": "ISC",
+  "browserify": {
+    "transform": ["react-templatify"]
+  },
   "dependencies": {
     "express": "^4.14.0",
     "handlebars": "^4.0.5",
@@ -31,6 +34,7 @@
   "devDependencies": {
     "del": "^2.2.2",
     "gulp": "^3.9.1",
-    "gulp-quintype": "^1.0.4"
+    "gulp-quintype": "^1.0.4",
+    "react-templatify": "^0.5.2"
   }
 }

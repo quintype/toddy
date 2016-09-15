@@ -1,0 +1,1 @@
+<div>Hello, {this.props.foobar} {this.state.count}</div>

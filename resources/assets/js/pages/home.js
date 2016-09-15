@@ -7,9 +7,7 @@ var HomePage = React.createClass({
     };
   },
 
-  render: function() {
-    return React.createElement("div", {}, "Hello, " + this.props.foobar + " " + this.state.count);
-  },
+  render: require("./home.rt"),
 
   componentDidMount: function() {
     var self = this;
