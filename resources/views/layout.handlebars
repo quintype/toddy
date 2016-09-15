@@ -17,9 +17,6 @@
         {{#js}}{{{.}}};{{/js}}
       });
     </script>
-    <script type="text/javascript" src="{{assetPath 'application.js'}}"></script>
-    <script type="text/javascript">
-      app.initQtReady();
-    </script>
+    <script type="text/javascript" src="{{assetPath 'application.js'}}" async></script>
   </body>
 </html>

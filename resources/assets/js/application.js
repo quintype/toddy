@@ -9,3 +9,4 @@ app.homePage = function(opts) {
 };
 
 app.initQtReady = require("./qt_ready");
+app.initQtReady();
