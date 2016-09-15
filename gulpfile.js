@@ -23,5 +23,5 @@ gulp.task("clean-compile", ["clean"], compileAll);
 gulp.task("default", ["server-compile", "clean-compile"]);
 
 gulp.task('watch', ['clean-compile'], function() {
-  gulp.watch("./resources/assets/**/*", ['compile']);
+  gulp.watch("./resources/assets/**/*", ['server-compile', 'compile']);
 });
