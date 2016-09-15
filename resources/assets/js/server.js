@@ -3,7 +3,7 @@ var ReactDomServer = require("react-dom/server");
 
 global.app = global.app || {};
 
-app.homePage = function(opts) {
-  var HomePage = require("./pages/home");
-  return ReactDomServer.renderToString(React.createElement(HomePage, opts));
+var Root = require("./pages/root");
+app.render = function(opts) {
+  return ReactDomServer.renderToString(React.createElement(Root, opts));
 };

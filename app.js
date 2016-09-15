@@ -55,8 +55,12 @@ app.all("/stories.rss", sketchesProxy);
 app.all("/news_sitemap.xml", sketchesProxy);
 
 app.get('/', withLayout(() => {
-  var js = "app.homePage(" + JSON.stringify({foobar: "World!"}) + ")";
-  return new Promise((resolve) => resolve({title: "Sample App", content: serverSideRender(js), js: js}));
+  var js = "app.render(" + JSON.stringify({page: 'home', args: {stories: []}}) + ")";
+  return new Promise((resolve) => resolve({
+    title: "Sample App",
+    content: serverSideRender(js),
+    js: js
+  }));
 }));
 
 app.listen(3000, function () {
