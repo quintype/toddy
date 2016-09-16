@@ -17,6 +17,8 @@ function fetchFromCache(url, ajaxQuery, callback) {
 	ajaxQuery().end(callback);
       }
     });
+  } else {
+    ajaxQuery().end(callback);
   }
 }
 
