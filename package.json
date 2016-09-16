@@ -20,6 +20,15 @@
   "license": "ISC",
   "browserify": {
     "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015",
+            "react"
+          ]
+        }
+      ],
       "react-templatify"
     ]
   },
@@ -35,6 +44,9 @@
     "superagent": "^2.2.0"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babelify": "^7.3.0",
     "del": "^2.2.2",
     "empty-web-gif": "^1.0.0",
     "gulp": "^3.9.1",
