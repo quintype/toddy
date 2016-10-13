@@ -7,7 +7,7 @@ var client = require("./app/client");
 
 var sketchesProxy = require("./app/sketches-proxy");
 var serverSideRender = require("./app/server-side-render");
-var {HomeSeo, StaticPageSeo, SectionSeo, TagSeo, StorySeo, SearchSeo} = require('quintype-seo-node');
+var {HomeSeo} = require('quintype-seo-node');
 var layout = require("./app/layout");
 
 var Promise = require("bluebird");
