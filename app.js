@@ -7,7 +7,7 @@ var client = require("./app/client");
 
 var sketchesProxy = require("./app/sketches-proxy");
 var serverSideRender = require("./app/server-side-render");
-
+var {HomeSeo} = require('quintype-seo-node');
 var layout = require("./app/layout");
 
 var Promise = require("bluebird");
@@ -55,11 +55,13 @@ app.all("/stories.rss", sketchesProxy);
 app.all("/news_sitemap.xml", sketchesProxy);
 
 app.get('/', withLayout(() => {
+  var homeSeo = new HomeSeo(client.getConfig);
   var js = "app.render(" + JSON.stringify({page: 'home', args: {stories: []}}) + ")";
   return new Promise((resolve) => resolve({
     title: "Sample App",
     content: serverSideRender(js),
-    js: js
+    js: js,
+    seoTags: homeSeo.getMetaTags()
   }));
 }));
 
