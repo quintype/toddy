@@ -39,10 +39,14 @@ function withLayout(f) {
 app.use(express.static("public"));
 
 app.get("/ping", function(req, res) {
-  if(client.getConfig())
-    res.send("pong")
-  else
-    res.status(503).send({error: {message: "Config not loaded"}});
+  client
+  .getConfig()
+  .then(() => res.send("pong"))
+  .catch(() =>
+    res
+    .status(503)
+    .send({error: {message: "Config not loaded"}})
+  );
 });
 
 app.all("/api/*", sketchesProxy);
