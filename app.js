@@ -14,23 +14,27 @@ var Promise = require("bluebird");
 
 function withLayout(f) {
   return function(req, res) {
-    var config = client.getConfig();
+    var config;
 
-    f(req, res, {config: config})
+    client.getConfig()
+      .then(_config => config = _config)
+      .then(() => f(req, res, {config: config}))
       .then(result => {
-	if(!res.finished) {
-	  res.send(layout(_.extend({
-	    title: "Sample App",
-	    config: config
-	  }, result)));
-	}
-      }).catch(function(e) {
-	res.status(500);
-	console.log(e);
-      }).finally(() => res.end());
+        if(!res.finished) {
+          res.send(layout(_.extend({
+            title: "Sample App",
+            config: config
+          }, result)));
+        }
+      })
+      .catch(function(e) {
+        res.status(500);
+        console.log(Date(Date.now()));
+        console.log(e);
+      })
+      .finally(() => res.end());
   };
 }
-
 
 app.use(express.static("public"));
 
