@@ -73,6 +73,11 @@ app.get('/', withLayout(() => {
   }));
 }));
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+module.exports = function startApp() {
+  return client.getConfig()
+  .then(function() {
+     app.listen(3000, function () {
+       console.log('Example app listening on port 3000!');
+     });
+   });
+}
