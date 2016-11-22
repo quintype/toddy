@@ -58,7 +58,7 @@ app.all("/auth.callback", sketchesProxy);
 app.all("/auth", sketchesProxy);
 app.all("/admin/*", sketchesProxy);
 app.all("/sitemap.xml", sketchesProxy);
-app.all("/sitemap", sketchesProxy);
+app.all("/sitemap/*", sketchesProxy);
 app.all("/feed", sketchesProxy);
 app.all("/rss-feed", sketchesProxy);
 app.all("/stories.rss", sketchesProxy);
