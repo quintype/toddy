@@ -9,6 +9,7 @@ var sketchesProxy = require("./app/sketches-proxy");
 var serverSideRender = require("./app/server-side-render");
 var {HomeSeo} = require('quintype-seo-node');
 var layout = require("./app/layout");
+var robots = require("./app/robots");
 
 var Promise = require("bluebird");
 
@@ -56,11 +57,17 @@ app.all("/auth.form", sketchesProxy);
 app.all("/auth.callback", sketchesProxy);
 app.all("/auth", sketchesProxy);
 app.all("/admin/*", sketchesProxy);
+app.all("/sitemap.xml", sketchesProxy);
 app.all("/sitemap", sketchesProxy);
 app.all("/feed", sketchesProxy);
 app.all("/rss-feed", sketchesProxy);
 app.all("/stories.rss", sketchesProxy);
 app.all("/news_sitemap.xml", sketchesProxy);
+
+app.get("/robots.txt", function(req, res) {
+  res.setHeader("Content-Type", "text/plain")
+  res.end(robots(req));
+});
 
 app.get('/', withLayout(() => {
   var homeSeo = new HomeSeo(client.getConfig);
