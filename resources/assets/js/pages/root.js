@@ -2,7 +2,8 @@ var React = require("react");
 var _ = require("lodash");
 
 var ROOT_COMPONENTS = {
-  home: require("./home")
+  home: require("./home"),
+  story: require("./story")
 };
 
 class RootComponent extends React.Component {

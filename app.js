@@ -8,6 +8,7 @@ var client = require("./app/client");
 var sketchesProxy = require("./app/sketches-proxy");
 var serverSideRender = require("./app/server-side-render");
 var {HomeSeo} = require('quintype-seo-node');
+var {Story} = require('quintype-backend');
 var layout = require("./app/layout");
 var robots = require("./app/robots");
 
@@ -80,11 +81,38 @@ app.get('/', withLayout(() => {
   }));
 }));
 
+// story page route
+app.get('/:section/:yyyy/:mm/:dd/:slug', withLayout((req, res) => {
+  return Story
+        .getStoryBySlug(client, req.params.slug)
+        .then(_story => {
+          var storyJson = _story.asJson(),
+              js = "app.render(" + JSON.stringify({page: 'story', args: {story: storyJson}}) + ")";
+          return {
+            title: storyJson["headline"],
+            content: serverSideRender(js),
+            js: js
+          }
+        });
+}));
+
+//redirect this route to story page
+//when google crawls this page ideally it should go to story page
+//expected behaviour right now date:28/November/2016
+app.get('/story/:storyId/element/:elementId', withLayout((req, res) => {
+  return Story
+        .getStoryById(client, req.params.storyId)
+        .then(_story => {
+          var storyJson = _story.asJson();
+          return res.redirect(301, "/" + storyJson['slug'])
+        });
+}));
+
 module.exports = function startApp() {
   return client.getConfig()
   .then(function() {
      app.listen(3000, function () {
        console.log('Example app listening on port 3000!');
      });
-   });
+  });
 }

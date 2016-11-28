@@ -38,7 +38,7 @@
     "handlebars": "^4.0.5",
     "http-proxy": "^1.14.0",
     "js-yaml": "^3.6.1",
-    "quintype-backend": "0.1.5",
+    "quintype-backend": "^0.2.1",
     "quintype-seo-node": "0.0.3",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
