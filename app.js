@@ -96,15 +96,15 @@ app.get('/:section/:yyyy/:mm/:dd/:slug', withLayout((req, res) => {
         });
 }));
 
-//redirect this route to story page
-//when google crawls this page ideally it should go to story page
-//expected behaviour right now date:28/November/2016
-app.get('/story/:storyId/element/:elementId', withLayout((req, res) => {
+// redirect this route to story page
+// when google crawls this page ideally it should go to story page
+// expected behaviour right now date:28/November/2016
+app.get('/story/:storyId/element/:elementId', withLayout((req, res, {config}) => {
   return Story
         .getStoryById(client, req.params.storyId)
         .then(_story => {
           var storyJson = _story.asJson();
-          return res.redirect(301, "/" + storyJson['slug'])
+          return res.redirect(301, config['sketches-host'] + "/" + storyJson['slug'])
         });
 }));
 
