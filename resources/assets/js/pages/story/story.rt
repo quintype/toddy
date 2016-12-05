@@ -1,0 +1,15 @@
+<rt-import name="*" as="HeaderCard" from="./header_card" />
+<rt-import name="*" as="Card" from="./card" />
+
+<div class="story-page">
+  <article  class="story" rt-scope="this.state.story as story">
+    <HeaderCard  class="header-card"
+                 story="{this.state.story}"
+                 config="{this.props.config}" />
+    <div  data-story-content-id="{story['story-content-id']}"
+          data-story-version-id="{story['story-version-id']}">
+      <Card rt-repeat="card in story['cards']"
+            card="{card}" />
+    </div>
+  </article>
+</div>

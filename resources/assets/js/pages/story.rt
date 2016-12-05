@@ -1,3 +1,0 @@
-<article id="story" rt-scope="this.state.story as story">
-  <h1>{story.headline}</h1>
-</article>

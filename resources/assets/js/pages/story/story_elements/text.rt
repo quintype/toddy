@@ -1,0 +1,6 @@
+<rt-import name="*" as="DangerousDiv" from="../../../utils/dangerous_div" />
+
+<div>
+  <DangerousDiv rt-if="!this.state.textElement['subtype']"
+                dangerouslySetInnerHTML="{{__html: this.state.textElement.text}}"/>
+</div>
