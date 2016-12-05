@@ -5,7 +5,7 @@
   <div  rt-scope="this.state.card as storyCard"
         data-card-content-id="{storyCard['id']}"
         data-card-version-id="{storyCard['content-version-id']}">
-        <StoryElement rt-repeat="storyElement in storyCard['story-elements']" 
-                      storyElement="{storyCard['story-elements']}"/>
+        <StoryElement rt-repeat="storyElement in storyCard['story-elements']"
+                      storyElement="{storyElement}"/>
   </div>
 </div>

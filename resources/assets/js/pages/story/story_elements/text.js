@@ -1,16 +1,38 @@
 var React = require('react');
 
-class TextCard extends React.Component {
+var bigfactTemplate = require('./sub_types/bigfact.rt'),
+    blockquoteTemplate = require('./sub_types/blockquote.rt'),
+    blurbTemplate = require('./sub_types/blurb.rt'),
+    qandaTemplate = require('./sub_types/q_and_a.rt'),
+    quoteTemplate = require('./sub_types/quote.rt'),
+    summaryTemplate = require('./sub_types/summary.rt'),
+    textTemplate = require('./text.rt');
+
+var textElementType = {
+  'bigfact': bigfactTemplate,
+  'blockquote': blockquoteTemplate,
+  'blurb':blurbTemplate,
+  'q-and-a':qandaTemplate,
+  'quote':quoteTemplate,
+  'summary':summaryTemplate,
+  'text': textTemplate
+}
+
+class TextElement extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      textElement: this.props.storyElement
+      element: this.props.storyElement
     }
   }
 
+  getElementTypeOrSubtype() {
+    return this.state.element.subtype || this.state.element.type;
+  }
+
   render() {
-    return require("./text.rt").call(this);
+    return textElementType[this.getElementTypeOrSubtype()].call(this);
   }
 };
 
-module.exports = TextCard;
+module.exports = TextElement;
