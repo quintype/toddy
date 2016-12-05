@@ -10,6 +10,10 @@ function renderLayout(opts) {
     helpers: {
       assetPath: function(path) {
         return [config.asset_host, config.publisher_name, "assets", assets[path]].join("/");
+      },
+
+      toJson: function(obj) {
+        return JSON.stringify(obj);
       }
     }
   })
