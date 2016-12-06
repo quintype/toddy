@@ -70,27 +70,27 @@ app.get("/robots.txt", function(req, res) {
   res.end(robots(req));
 });
 
-app.get('/', withLayout(() => {
+app.get('/', withLayout((req, res, {config}) => {
   var homeSeo = new HomeSeo(client.getConfig);
   var js = "app.render(" + JSON.stringify({page: 'home', args: {stories: []}}) + ")";
   return new Promise((resolve) => resolve({
     title: "Sample App",
-    content: serverSideRender(js),
+    content: serverSideRender(config, js),
     js: js,
     seoTags: homeSeo.getMetaTags()
   }));
 }));
 
 // story page route
-app.get('/:section/:yyyy/:mm/:dd/:slug', withLayout((req, res) => {
+app.get('/:section/:yyyy/:mm/:dd/:slug', withLayout((req, res, {config}) => {
   return Story
         .getStoryBySlug(client, req.params.slug)
         .then(_story => {
           var storyJson = _story.asJson(),
-              js = "app.render(" + JSON.stringify({page: 'story', args: {story: storyJson}}) + ")";
+              js = "app.render(" + JSON.stringify({page: 'story', args: {story: storyJson, config: config}}) + ")";
           return {
             title: storyJson["headline"],
-            content: serverSideRender(js),
+            content: serverSideRender(config, js),
             js: js
           }
         });

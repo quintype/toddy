@@ -1,0 +1,38 @@
+<div rt-scope="this.state.story as story;this.getShareUrl(story) as shareUrl">
+  <a  target="_blank"
+      href="{`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&amp;t=${story['summary']}`}"
+      data-service="facebook"
+      data-social-media-type="facebook"
+      data-social-media-share-url="{shareUrl}"
+      data-mobile-iframe="true"
+      class="share-link share-link-facebook">
+  </a>
+  <a  target="_blank"
+      href="{`https://twitter.com/intent/tweet?url=${shareUrl}&amp;text=${this.getUrlEncodedHeadline(story)}`}"
+      data-service="twitter"
+      data-social-media-type="twitter"
+      data-social-media-share-url="{shareUrl}"
+      class="share-link share-link-twitter">
+  </a>
+  <a  target="_blank"
+      href="{`https://plus.google.com/share?url=${shareUrl}`}"
+      data-service="google_plusone_share"
+      data-social-media-type="google_plusone_share"
+      data-social-media-share-url="{shareUrl}"
+      class="share-link share-link-googleplus">
+  </a>
+  <a  target="_blank"
+      href="{`https://www.linkedin.com/shareArticle?mini=true&amp;url=${shareUrl}`}"
+      data-service="linkedin"
+      data-social-media-type="linkedin"
+      data-social-media-share-url="{shareUrl}"
+      class="share-link share-link-linkedin">
+  </a>
+  <a  target="_blank"
+      href="{`whatsapp://send?text=${shareUrl}`}"
+      data-service="whatsapp"
+      data-social-media-type="whatsapp"
+      data-social-media-share-url="{shareUrl}"
+      class="share-link share-link-whatsapp">
+  </a>
+</div>

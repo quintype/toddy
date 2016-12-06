@@ -1,0 +1,16 @@
+<rt-import name="*" as="_" from="lodash" />
+<rt-import name="*" as="ShareCard" from="./share_card" />
+
+<div rt-scope="this.state.story as story; this.props.config as config">
+  <h1>{story['headline']}</h1>
+  <h4>{_.head(story['sections'])['name']}</h4>
+  <ShareCard story="{story}" />
+  <div>
+    <figure>
+      <img src="{this.focusedImageUrl(story, config)}"/>
+    </figure>
+  </div>
+  <div>
+    <a href="/author/{story['author-id']}"><h4>{story['author-name']}</h4></a>
+  </div>
+</div>

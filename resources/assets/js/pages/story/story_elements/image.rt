@@ -1,0 +1,6 @@
+<figure>
+  <img src="{this.focusedImageUrl(this.state.storyElement['image-s3-key'], this.state.storyElement['image-metadata'], [16,9], 640)}"/>
+  <figcaption>
+    {this.state.storyElement.title}
+  </figcaption>
+</figure>

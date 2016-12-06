@@ -1,0 +1,6 @@
+<rt-import name="*" as="DangerousDiv" from="../../../utils/dangerous_div" />
+<rt-import name="*" as="StoryElement" from="../story_element" />
+
+<div>
+  <DangerousDiv dangerouslySetInnerHTML="{{__html: this.decodeBase64Data(this.state.storyElement['embed-js'])}}"/>
+</div>

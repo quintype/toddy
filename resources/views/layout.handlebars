@@ -7,6 +7,10 @@
   </head>
   <body>
     <script type="text/javascript">var qtReady = qtReady || [];</script>
+     <script type="text/javascript">
+      window.app = window.app || {};
+      window.app.config = Object.freeze({{{toJson config}}});
+    </script>
     <div class="body-container">
       <div class="layout-content">
 	<div id="container">{{{content}}}</div>
