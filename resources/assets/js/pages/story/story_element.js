@@ -14,7 +14,8 @@ var bigfactTemplate = require('./story_elements/sub_types/bigfact.rt'),
     soundcloudTemplate = require('./story_elements/soundcloud.rt'),
     summaryTemplate = require('./story_elements/sub_types/summary.rt'),
     textTemplate = require('./story_elements/text.rt'),
-    youtubeTemplate = require('./story_elements/youtube.rt');
+    youtubeTemplate = require('./story_elements/youtube.rt'),
+    yetToBuild = require('./story_elements/yet_to_build.rt');
 
 var storyElements = {
   'bigfact': bigfactTemplate,
@@ -54,7 +55,8 @@ class StoryElement extends React.Component {
   }
 
   render() {
-    return storyElements[this.getElementTypeOrSubtype()].call(this);
+    var template = storyElements[this.getElementTypeOrSubtype()] || yetToBuild;
+    return template.call(this);
   }
 }
 
