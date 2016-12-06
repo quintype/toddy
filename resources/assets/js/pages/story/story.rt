@@ -9,6 +9,7 @@
     <div  data-story-content-id="{story['story-content-id']}"
           data-story-version-id="{story['story-version-id']}">
       <Card rt-repeat="card in story['cards']"
+            config="{this.props.config}"
             card="{card}" />
     </div>
   </article>
