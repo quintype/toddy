@@ -1,0 +1,1 @@
+<iframe src="{this.state.storyElement['embed-url']}" frameBorder="0" allowFullScreen></iframe>

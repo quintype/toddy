@@ -1,5 +1,5 @@
 <rt-import name="*" as="DangerousDiv" from="../../../../utils/dangerous_div" />
 
 <div>
-  <DangerousDiv dangerouslySetInnerHTML="{{__html: this.state.element.text}}"/>
+  <DangerousDiv dangerouslySetInnerHTML="{{__html: this.state.storyElement.text}}"/>
 </div>
