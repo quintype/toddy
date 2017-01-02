@@ -1,3 +1,4 @@
+var compression = require('compression');
 var express = require('express');
 var app = express();
 
@@ -39,6 +40,7 @@ function withLayout(f) {
 }
 
 app.use(express.static("public"));
+app.use(compression());
 
 app.get("/ping", function(req, res) {
   client
