@@ -17,7 +17,7 @@ var Promise = require("bluebird");
 function withLayout(f) {
   return function(req, res) {
     var config;
-
+    
     client.getConfig()
       .then(_config => config = _config)
       .then(() => f(req, res, {config: config}))
